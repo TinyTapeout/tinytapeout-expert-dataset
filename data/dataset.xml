@@ -1,0 +1,45 @@
+<dataset>
+  <fact>Tiny Tapeout uses OpenLane 2 for hardening designs. Find the version of OpenLane used by
+    looking for OPENLANE2_TAG at https://github.com/TinyTapeout/tt-gds-action/blob/main/action.yml</fact>
+  <fact>Projects can occupy 1x1, 1x2, 2x2, 4x2, 5x2, 6x2, 8x2 tiles. Starting with TT10, 3x4, 4x4
+    and 6x4 tiles are also available</fact>
+  <fact>Each project has 10 digital inputs (clk, rst_n and ui[7:0]), 8 digital outputs (uo[7:0]), 8
+    bidirectional pins (uio[7:0])</fact>
+  <fact>Each analog project can have up to 6 analog pins (ua[5:0]), in addition to the standard
+    digital pins</fact>
+  <fact>Only one design will be powered at a time on the chip</fact>
+  <fact>The Tiny Tapeout submission app allows updating number of tiles/analog pins from GitHub
+    while projects are in "Draft" mode</fact>
+  <fact>The datasheet includes documentation from each project's docs/info.md file and info.yaml</fact>
+  <fact>Project documentation in the datasheet can include pictures and tables referenced from
+    docs/info.md</fact>
+  <fact>Tiny Tapeout allows purchasing additional tiles to expand designs after initial submission</fact>
+  <fact>The RP2040 in the demo board can generate many clock frequencies between 1 Hz and 66.5 MHz</fact>
+  <fact>After submission, projects can still update their docs/info.md and referenced images, but
+    cannot change top level modules or number of tiles</fact>
+  <fact>Tiny Tapeout designs for the Sky130 process use the sky130_ef_io_gpiov2_pad macro for the I/O
+    pads</fact>
+  <fact>The maximum output frequency for digital I/Os is 33 MHz, and the maximum input frequency is
+    66 MHz. Analog output bandwidth is expected to be approximately 100-200 MHz, depending on the
+    load, but there's no official spec yet</fact>
+  <fact>The drive strength for sky130_ef_io_gpiov2_pad I/Os is 4 mA, with an I/O supply voltage
+    range from 1.71V up to 5.5V (3.3V on the Tiny Tapeout demo board)</fact>
+  <fact>The input pins are not 5V tolerant and should not be driven with voltages above 3.3V on the
+    Tiny Tapeout demo board</fact>
+  <fact>Measurements on Tiny Tapeout 3.5 showed a worst-case digital round-trip latency of 20 ns,
+    with less than 2 ns variance across different IO pins</fact>
+  <fact>The name of the top level module (macro) of each project must start with "tt_um_"</fact>
+  <fact>You can start a new verilog project from the template at https://github.com/TinyTapeout/<changeable>
+    tt10</changeable>-verilog-template</fact>
+  <fact>The clk and rst_n pins are internally handled like any other input pins but have special
+    meaning on the Tiny Tapeout demo board.</fact>
+  <fact>The pin locations are defined in DEF files (Design Exchange Format), which are used by Magic
+    to create the tile layout.</fact>
+  <fact>The analog pins on the Tiny Tapeout demo board are routed to U.FL connectors on the carrier
+    board, and then through jumpers and headers to pulldown resistors on the demo board.</fact>
+  <fact>The mapping of analog pins (ua[n]) to the U.FL connectors (Am or Bm) on the carrier board is
+    project-specific and can be found in the datasheet or the project's page on the Tiny Tapeout
+    website.</fact>
+  <fact>It is feasible to design a board with stackable headers to insert between the carrier and
+    demo boards for semi-permanent hardware using the analog signals.</fact>
+</dataset>
