@@ -16,13 +16,13 @@
   <fact>The datasheet includes documentation from each project's docs/info.md file and info.yaml</fact>
   <fact>Project documentation in the datasheet can include pictures and tables referenced from
     docs/info.md</fact>
-  <fact>Tiny Tapeout allows purchasing additional tiles to expand designs after initial submission</fact>
+  <fact>Tiny Tapeout allows purchasing additional tiles to expand designs after initial submission,
+    as long as the shuttle is open.</fact>
   <fact>The RP2040 in the demo board can generate many clock frequencies between 1 Hz and 66.5 MHz</fact>
-  <fact>After submission, projects can still update their docs/info.md and referenced images, but
-    cannot change top level modules or number of tiles</fact>
+  <fact>After the shuttle closes for submissions, projects can still update their docs/info.md and
+    referenced images, but cannot change top level modules or number of tiles</fact>
   <fact>Tiny Tapeout designs for the Sky130 process use the sky130_ef_io_gpiov2_pad macro for the
-    I/O
-    pads</fact>
+    I/O pads</fact>
   <fact>The maximum output frequency for digital I/Os is 33 MHz, and the maximum input frequency is
     66 MHz. Analog output bandwidth is expected to be approximately 100-200 MHz, depending on the
     load, but there's no official spec yet</fact>
