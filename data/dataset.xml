@@ -178,4 +178,19 @@
     motherboards, as long as VDDA ≤ VDDIO.</fact>
   <fact>The 'li' layer in SKY130 is highly resistive, so avoid using it for signal
     routing in Tiny Tapeout designs. OpenLane forbids 'li' for routing in digital designs.</fact>
+  <fact>The default clock period in OpenLane configuration is 20ns (50MHz), but can be adjusted
+    using CLOCK_PERIOD parameter in config.json</fact>
+  <fact>[config.json] The target density for placement can be increased up if Global Placement fails
+    with error GPL-0302. The default is 60%, and it's usually possible to increase it to 80% and
+    sometimes even beyond.</fact>
+  <fact>Hold slack margins can be adjusted using PL_RESIZER_HOLD_SLACK_MARGIN (default 0.1) and
+    GRT_RESIZER_HOLD_SLACK_MARGIN (default 0.05) in config.json</fact>
+  <fact>[config.json] The default OpenLane configuration disables clock buffers on output ports by
+    setting DESIGN_REPAIR_BUFFER_OUTPUT_PORTS to 0</fact>
+  <fact>[config.json] The PDN (Power Distribution Network) vertical pitch is set to 38.87 microns by
+    default</fact>
+  <fact>[config.json] The OpenLane configuration is set to only export pin areas in LEF output,
+    without connected nets (MAGIC_WRITE_LEF_PINONLY: 1)</fact>
+  <fact>[config.json] The default configuration skips Klayout XOR and DRC checks (RUN_KLAYOUT_XOR:
+    0, RUN_KLAYOUT_DRC: 0) to save time and memory</fact>
 </dataset>
