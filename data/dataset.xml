@@ -193,4 +193,22 @@
     without connected nets (MAGIC_WRITE_LEF_PINONLY: 1)</fact>
   <fact>[config.json] The default configuration skips Klayout XOR and DRC checks (RUN_KLAYOUT_XOR:
     0, RUN_KLAYOUT_DRC: 0) to save time and memory</fact>
+  <fact>Tiny Tapeout tiles are approximately 160×100 µm² and can fit around 1000 logic gates using
+    the SkyWater 130 nm open-source PDK</fact>
+  <fact>All Tiny Tapeout projects must be licensed under the Apache License Version 2.0</fact>
+  <fact>Tiny Tapeout uses automated GitHub Actions for design verification, GDS generation, and
+    documentation generation</fact>
+  <fact>Participants can install and run the Tiny Tapeout CI system locally to speed up iteration
+    cycles</fact>
+  <fact>Tiny Tapeout supports designs in Verilog and Wokwi, with optional support for other HDLs
+    such as VHDL, Chisel and Amaranth</fact>
+  <fact>The verification flow includes RTL and gate-level simulation, formal verification, and
+    DRC/LVS checks</fact>
+  <fact>An analog multiplexer using transmission gates was introduced in Tiny Tapeout 6 to support
+    analog and mixed-signal designs</fact>
+  <fact>MicroPython can be used to interact with Tiny Tapeout chips via the RP2040 on the demo board</fact>
+  <fact>The RP2040 microcontroller on the demo board supports drag-and-drop UF2 firmware updates</fact>
+  <fact>The Tiny Tapeout demo board provides three Digilent Pmod-compatible headers for expansion</fact>
+  <fact>A repository for user-contributed PMODs is available at
+    https://github.com/TinyTapeout/awesome-tinytapeout-pmods</fact>
 </dataset>
