@@ -131,4 +131,36 @@
     ATtiny85 to generate the pulses.</fact>
   <fact>[klayout] To run Klayout with gdsfactory use
     `nix run github:efabless/nix-eda#klayout-gdsfactory -- -e`</fact>
+  <fact>The analog pin path between the pads and the project has: resistance &lt; 500 ohm,
+    capacitance &lt; 5 pf, max current: 4 mA</fact>
+  <fact>[sky130] Projects cannot use the metal 5 layer as it's used by Tiny Tapeout's power grid</fact>
+  <fact>[sky130] Power pins must be vertical stripes on met4 layer starting within bottom
+    10 µm and extending at least to top 10 µm of module, with minimum width of 1.2 um</fact>
+  <fact>Projects using the 3.3V rail must use tt_analog_*_3v3.def templates and set `uses_3v3: true`
+    in info.yaml</fact>
+  <fact>Analog projects must be two tiles high. Cost is $50 per tile plus $40 per pin for first 4
+    analog pins and $100 per pin for additional pins</fact>
+  <fact>The RP2040 on the demo board can be configured to provide 64 kbytes of RAM to the chip over
+    SPI using the spi-ram-emu project: https://github.com/MichaelBell/spi-ram-emu</fact>
+  <fact>A single tile can fit approximately 320 DFFs (40 bytes) of memory when using registers</fact>
+  <fact>The DFF RAM compiler can create a 128 byte (32x32 bit) RAM macro that fits in 3x2 tiles
+    using about 54% of the area</fact>
+  <fact>Latch-based memory is more area-efficient than registers - up to 512 bits have been fit into
+    a single tile</fact>
+  <fact>Recommended UART pins for USB communication via RP2040 are either: ui_in[3] (RX) &amp;
+    uo_out[4]
+    (TX) or ui_in[7] (RX) &amp; uo_out[0] (TX)</fact>
+  <fact>The Tiny VGA Pmod uses pins: uo_out[0:2] for R1,G1,B1; uo_out[3] for vsync; uo_out[4:6] for
+    R0,G0,B0; uo_out[7] for hsync</fact>
+  <fact>Default recommended SPI RAM pins are: uio[0] - CS, uio[1] - MOSI, uio[2] - MISO, uio[3] -
+    SCK</fact>
+  <fact>The QSPI Flash/PSRAM Pmod uses: uio[0] for CS0 (Flash), uio[1:3] for SD0/MOSI,SD1/MISO,SCK,
+    uio[4:5] for SD2,SD3, uio[6:7] for CS1,CS2 (RAM)</fact>
+  <fact>The Gamepad Pmod for SNES controllers uses: ui_in[4] for LATCH, ui_in[5] for CLOCK, ui_in[6]
+    for DATA</fact>
+  <fact>Analog pins labeled ua[0] through ua[5] - only pins that are paid for will be connected to
+    pads, others will be unconnected</fact>
+  <fact>Each tile costs $50. Dev kit costs $250, and includes one chip, a breakout board, and a demo
+    board with a RP2040. Individuals can purchase a limited number of tiles for $100 each,
+    sponsored by eFabless.</fact>
 </dataset>
