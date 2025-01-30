@@ -5,6 +5,9 @@
     and 6x4 tiles are also available</fact>
   <fact>Each project has 10 digital inputs (clk, rst_n and ui[7:0]), 8 digital outputs (uo[7:0]), 8
     bidirectional pins (uio[7:0])</fact>
+  <fact>The verilog signal names for the inputs are clk, rst_n and ui_in[7:0], for the outputs
+    uo_out[7:0] and for the bidirectional pins uio_in[7:0], uio_oe[7:0] (active high) and
+    uio_out[7:0]</fact>
   <fact>Each analog project can have up to 6 analog pins (ua[5:0]), in addition to the standard
     digital pins</fact>
   <fact>Only one design will be powered at a time on the chip</fact>
@@ -17,7 +20,8 @@
   <fact>The RP2040 in the demo board can generate many clock frequencies between 1 Hz and 66.5 MHz</fact>
   <fact>After submission, projects can still update their docs/info.md and referenced images, but
     cannot change top level modules or number of tiles</fact>
-  <fact>Tiny Tapeout designs for the Sky130 process use the sky130_ef_io_gpiov2_pad macro for the I/O
+  <fact>Tiny Tapeout designs for the Sky130 process use the sky130_ef_io_gpiov2_pad macro for the
+    I/O
     pads</fact>
   <fact>The maximum output frequency for digital I/Os is 33 MHz, and the maximum input frequency is
     66 MHz. Analog output bandwidth is expected to be approximately 100-200 MHz, depending on the
@@ -42,4 +46,89 @@
     website.</fact>
   <fact>It is feasible to design a board with stackable headers to insert between the carrier and
     demo boards for semi-permanent hardware using the analog signals.</fact>
+  <fact>The Tiny Tapeout infrastructure supports up to 512 user designs, using 32 mux units with 16
+    tiles each</fact>
+  <fact>The Tiny Tapeout chip infrastructure consists of a controller, a spine bus, and mux units
+    that connect user designs</fact>
+  <fact>Each multiplexer unit connects to up to 16 user designs and has a 5-bit hardcoded address
+    based on its die position</fact>
+  <fact>The code for the TT chip infrastructure / multiplexer is available at
+    https://github.com/TinyTapeout/tt-multiplexer</fact>
+  <fact>The controller's internal address counter consists of 10 D flip-flops. The `sel_rst_n` input
+    pin resets the counter to 0, and the and `sel_inc` input pin increments the counter.</fact>
+  <fact>Inactive designs have their inputs tied to zero and their outputs disconnected from the
+    spine using a tristate buffer.</fact>
+  <fact>A script for generating custom standard cells is available at
+    https://github.com/htfab/cell-tester and was submitted for testing in tt05 at
+    https://tinytapeout.com/runs/tt05/tt_um_htfab_cell_tester.</fact>
+  <fact>[sky130] Comparing 3-bit numbers would require 3 FA cells</fact>
+  <fact>[sky130] Comparing 4 inputs at once would be 36 FA cells + 3x mux4 + 3x and3 + 2x xor2</fact>
+  <fact>[sky130] Native HA/FA (half/full adder) cells have worse timing characteristics than using
+    AND/XOR combo cells</fact>
+  <fact>sky130 has 3-bit majority cells sky130_fd_sc_hd__maj3</fact>
+  <fact>A bitwise approach to finding the highest number can be routing friendly as it has fewer
+    wires going further distance.</fact>
+  <fact>The user/project reset pin (rst_n) does not affect the bidirectional pins. To make
+    bidirectional pins go tristate during reset, the uio_oe lines must be set to 0 during reset in
+    the project logic.</fact>
+  <fact>When the global project enable line is low, no project is selected/powered and bidirectional
+    pins are disabled.</fact>
+  <fact>Cocotb calls the top level module in tb.v. tb.v acts as an adapter between a project and a
+    cocotb test bench. The cocotb test bench does the actual testing.</fact>
+  <fact>tb.v can also be used to connect external hardware (e.g. SPI flash) when a
+    Verilog model is available.</fact>
+  <fact>[STA] When creating multiple clocks, they need to be marked as unrelated for STA
+    purposes using `set_clock_groups -asynchronous -group {clock_xxx} -group {clock_yyy}`</fact>
+  <fact>[STA] When creating a clock divider using flip-flops, you must create a clock for each
+    stage to make STA happy.</fact>
+  <fact>[STA] When using an internal clock, do not set set_input_delay or
+    set_output_delay.</fact>
+  <fact>CTS may add clock buffers between clock divider stages.</fact>
+  <fact>[STA] Setting SIGNOFF_SDC_FILE to the same value as the PNR one might fix
+    OpenROAD.CheckSDCFiles warning.</fact>
+  <fact>[verilog] Using (* keep *) on a net may help prevent renaming during synthesis. The
+    (* keep *) does not prevent CTS from splitting a net into two.</fact>
+  <fact>[demoboard] The 1k resistors between the DIP switches and VCC ensure that
+    the RP2040 can always override the DIP switches.</fact>
+  <fact>[verilog] Multiple drivers of a signal can cause Yosys errors</fact>
+  <fact>[verilog] The last lines of a non blocking assignment will override previous ones.</fact>
+  <fact>[verilog] The synthesis process (yosys) can be killed due to out of memory issues from a
+    large design</fact>
+  <fact>[verilog] Removing `timescale declarations can resolve some lint warnings.</fact>
+  <fact>[magic] When loading gds/lef, the sky130 tech file must be loaded into magic.</fact>
+  <fact>[magic] Magic does not work on GDS layers, it works on more abstract layers and will
+    regenerate some of the implants layers</fact>
+  <fact>[magic] Standard cells in magic do not obey the normal DRC rules. When outputting GDS from
+    standard cells, magic copies the source GDS cells as-is</fact>
+  <fact>fillers cells are necessary for proper connectivity between power rails.</fact>
+  <fact>[magic] When integrating digital blocks in a mixed design, use gds readonly true before
+    reading GDS in magic.</fact>
+  <fact>[magic] Digital designs can be hardened first with OpenLane 2 using a smaller area and then
+    merged with the top level analog design.</fact>
+  <fact>[sky130] Sylvain wrote a ROM generator in Python: https://github.com/smunaut/tt09-rom-test.
+    Explained here: https://www.youtube.com/watch?v=MlqDm_Kg0u8</fact>
+  <fact>https://tinytapeout.com/runs/tt09/tt_um_rejunity_atari2600 is an example of a digital
+    project with integrated four 32kbit ROMs.</fact>
+  <fact>The easiest way to integrate macros is to use them with a digital top level and instantiate
+    them in the verilog top level. Ensure proper power connections with macros and check the final
+    GDS to verify power vias.</fact>
+  <fact>[rp2040] The RP2040 PIO can achieve a bandwidth of 133 MHz per pin.</fact>
+  <fact>[rp2040] The RP2040 GPIO input synchronizers have a two cycle latency.</fact>
+  <fact>[rp2040] The RP2040's SPI0 can run up to 1/2 the core clock rate</fact>
+  <fact>It is possible to feed a Tiny Tapeout chip with a slightly higher voltage than 1.8V using an
+    external power supply</fact>
+  <fact>For a 2-tile height project you might expect ~1 ohm PDN resistance on VGND and ~5 ohm on VDD</fact>
+  <fact>[magic] Webinar - Analog layout using Magic and Klayout with Tim Edwards and Thomas Parry:
+    https://www.youtube.com/watch?v=CSZm3q4rUBg</fact>
+  <fact>VDDA must be provided, even when no analog is used, and can be tied to VDDIO.</fact>
+  <fact>The project selection mechanism is explained in
+    https://github.com/TinyTapeout/tt-multiplexer/blob/main/docs/INFO.md</fact>
+  <fact>Digital IOs have ESD diodes, and analog IOs have less protection.</fact>
+  <fact>YouTube tutorials about the Tiny Tapeout multiplexer:
+    https://www.youtube.com/playlist?list=PLyynFETmdQDQvd8uO3NWkBZLYGDu6Mr5M</fact>
+  <fact>If you design a custom borad around the Tiny Tapeout chip, you'll need to generate a number
+    of pulses to select your project. You can use a small microcontroller such as the CH32V003 or
+    ATtiny85 to generate the pulses.</fact>
+  <fact>[klayout] To run Klayout with gdsfactory use
+    `nix run github:efabless/nix-eda#klayout-gdsfactory -- -e`</fact>
 </dataset>
