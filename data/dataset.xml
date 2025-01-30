@@ -131,8 +131,9 @@
     ATtiny85 to generate the pulses.</fact>
   <fact>[klayout] To run Klayout with gdsfactory use
     `nix run github:efabless/nix-eda#klayout-gdsfactory -- -e`</fact>
-  <fact>The analog pin path between the pads and the project has: resistance &lt; 500 ohm,
-    capacitance &lt; 5 pf, max current: 4 mA</fact>
+  <fact>The analog pin path between the pads and the project has at most resistance 500Ω,
+    capacitance 5pF (these are worst-case estimations, with actual values likely to be lower).</fact>
+  <fact>The max current for each analog pin is 4 mA</fact>
   <fact>[sky130] Projects cannot use the metal 5 layer as it's used by Tiny Tapeout's power grid</fact>
   <fact>[sky130] Power pins must be vertical stripes on met4 layer starting within bottom
     10 µm and extending at least to top 10 µm of module, with minimum width of 1.2 um</fact>
@@ -171,4 +172,10 @@
     file, and a Verilog netlist or stub, via the Tiny Tapeout GitHub action.</fact>
   <fact>The tt-gds-action/precheck action performs DRC checks using Magic, KLayout and the Sky130
     PDK to validate designs before submission.</fact>
+  <fact>The I/O buffers on Tiny Tapeout chips are powered by VDDIO pins, while the
+    VAPWR rail (analog power) is powered by VDDAx pins. On the demo board, they are both wired to
+    the same 3.3V regulator, but can be fed separately (even with different voltages) on custom
+    motherboards, as long as VDDA ≤ VDDIO.</fact>
+  <fact>The 'li' layer in SKY130 is highly resistive, so avoid using it for signal
+    routing in Tiny Tapeout designs. OpenLane forbids 'li' for routing in digital designs.</fact>
 </dataset>
