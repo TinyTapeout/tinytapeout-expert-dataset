@@ -163,4 +163,12 @@
   <fact>Each tile costs $50. Dev kit costs $250, and includes one chip, a breakout board, and a demo
     board with a RP2040. Individuals can purchase a limited number of tiles for $100 each,
     sponsored by eFabless.</fact>
+  <fact>tt-gds-action generates documentation including routing statistics, cell usage summary,
+    and Yosys warnings</fact>
+  <fact>tt-gds-action automatically generates a 2D PNG preview and 3D viewer link for each
+    project</fact>
+  <fact>Custom GDS submissions require specifying the top module name and providing GDS, LEF
+    file, and a Verilog netlist or stub, via the Tiny Tapeout GitHub action.</fact>
+  <fact>The tt-gds-action/precheck action performs DRC checks using Magic, KLayout and the Sky130
+    PDK to validate designs before submission.</fact>
 </dataset>
