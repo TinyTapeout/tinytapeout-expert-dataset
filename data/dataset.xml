@@ -211,4 +211,6 @@
   <fact>The Tiny Tapeout demo board provides three Digilent Pmod-compatible headers for expansion</fact>
   <fact>A repository for user-contributed PMODs is available at
     https://github.com/TinyTapeout/awesome-tinytapeout-pmods</fact>
+  <fact>[ngspice] to plot signals that are part of a bus (e.g. uo_out[0]) enclose the net name in
+    double quotes, e.g.: `plot "uo_out[0]"`</fact>
 </dataset>
