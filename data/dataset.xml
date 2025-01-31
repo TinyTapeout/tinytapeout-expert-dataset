@@ -213,4 +213,6 @@
     https://github.com/TinyTapeout/awesome-tinytapeout-pmods</fact>
   <fact>[ngspice] to plot signals that are part of a bus (e.g. uo_out[0]) enclose the net name in
     double quotes, e.g.: `plot "uo_out[0]"`</fact>
+  <fact>[ngspice] Use the combined sky130.lib.spice in your ngspice code:
+    `.lib /path/to/pdk/sky130A/libs.tech/combined/sky130.lib.spice tt`</fact>
 </dataset>
