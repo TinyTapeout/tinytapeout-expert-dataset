@@ -215,4 +215,12 @@
     double quotes, e.g.: `plot "uo_out[0]"`</fact>
   <fact>[ngspice] Use the combined sky130.lib.spice in your ngspice code:
     `.lib /path/to/pdk/sky130A/libs.tech/combined/sky130.lib.spice tt`</fact>
+  <fact>[shop] The online Tiny Tapeout store is available at https://store.tinytapeout.com/</fact>
+  <fact>[shop] The store offers a selection of chips from previous shuttle runs, hats, community
+    contributed Pmods, and stickers.</fact>
+  <fact>If you submitted a project to Tiny Tapeout and preordered a DevKit, you can see your order
+    at https://app.tinytapeout.com/orders. For store orders, go to
+    https://store.tinytapeout.com/products/account</fact>
+  <fact>The timeline for each shuttle (including the submission deadline and expected delivery date)
+    is available at https://tinytapeout.com/runs/</fact>
 </dataset>
