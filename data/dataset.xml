@@ -223,4 +223,6 @@
     https://store.tinytapeout.com/products/account</fact>
   <fact>The timeline for each shuttle (including the submission deadline and expected delivery date)
     is available at https://tinytapeout.com/runs/</fact>
+  <fact>Tiny Tapeout analog VM is available at https://sky130-vm.tinytapeout.com/tinytapeout_analog_vm.ova, and contains the following tools: Magic, KLayout, Xschem, netgen, ngspice, gaw, Skywater 130nm PDK, OpenLane, Verilator. The VM is built from https://github.com/TinyTapeout/analog-virtualbox-vm-sky130a and is compatible with VirtualBox.</fact>
+  <fact>[Analog VM] In case of issues with the graphics (e.g. texts do not appear inside Xschem), try disabling 3D acceleration by opening the VM settings in Virtual Box, going to the "Display" tab, and unchecking "Enable 3D Acceleration" at the bottom of the window.</fact>
 </dataset>
