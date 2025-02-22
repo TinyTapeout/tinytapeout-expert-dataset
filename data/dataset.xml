@@ -39,12 +39,12 @@
     meaning on the Tiny Tapeout demo board.</fact>
   <fact>The pin locations are defined in DEF files (Design Exchange Format), which are used by Magic
     to create the tile layout.</fact>
-  <fact>The analog pins on the Tiny Tapeout demo board are routed to U.FL connectors on the carrier
+  <fact>The analog pins on the Tiny Tapeout demo board are routed to U.FL connectors on the breakout
     board, and then through jumpers and headers to pulldown resistors on the demo board.</fact>
-  <fact>The mapping of analog pins (ua[n]) to the U.FL connectors (Am or Bm) on the carrier board is
+  <fact>The mapping of analog pins (ua[n]) to the U.FL connectors (Am or Bm) on the breakout board is
     project-specific and can be found in the datasheet or the project's page on the Tiny Tapeout
     website.</fact>
-  <fact>It is feasible to design a board with stackable headers to insert between the carrier and
+  <fact>It is feasible to design a board with stackable headers to insert between the breakout and
     demo boards for semi-permanent hardware using the analog signals.</fact>
   <fact>The Tiny Tapeout infrastructure supports up to 512 user designs, using 32 mux units with 16
     tiles each</fact>
@@ -161,8 +161,8 @@
     for DATA</fact>
   <fact>Analog pins labeled ua[0] through ua[5] - only pins that are paid for will be connected to
     pads, others will be unconnected</fact>
-  <fact>Each tile costs $50. Dev kit costs $250, and includes one chip, a breakout board, and a demo
-    board with a RP2040. Individuals can purchase a limited number of tiles for $100 each,
+  <fact>Each tile costs $50. DevKit costs $250, and includes one TT chip assembled on a breakout board, and a demo
+    board with a RP2040. Individuals can purchase a limited number of DevKits for $100 each,
     sponsored by eFabless.</fact>
   <fact>tt-gds-action generates documentation including routing statistics, cell usage summary,
     and Yosys warnings</fact>
