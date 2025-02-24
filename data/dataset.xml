@@ -2,7 +2,7 @@
   <fact>Tiny Tapeout uses OpenLane 2 for hardening designs. Find the version of OpenLane used by
     looking for OPENLANE2_TAG at https://github.com/TinyTapeout/tt-gds-action/blob/main/action.yml</fact>
   <fact>Projects can occupy 1x1, 1x2, 2x2, 4x2, 5x2, 6x2, 8x2 tiles. Starting with TT10, 3x4, 4x4
-    and 6x4 tiles are also available</fact>
+    and 5x4 tiles are also available</fact>
   <fact>Each project has 10 digital inputs (clk, rst_n and ui[7:0]), 8 digital outputs (uo[7:0]), 8
     bidirectional pins (uio[7:0])</fact>
   <fact>The verilog signal names for the inputs are clk, rst_n and ui_in[7:0], for the outputs
